@@ -1,0 +1,9 @@
+"date_range": "Mar 21 - Apr 20", 
+"current_date": "October 24, 2018", 
+"description": 
+"You pick up on someone's subtle signals late in the day and should be able to parlay that into a much stronger relationship. It may be romantic or business, but you should be better off tomorrow.", 
+"compatibility": "Sagittarius", 
+"mood": "Productive", 
+"color": "Purple", 
+"lucky_number": "69", 
+"lucky_time": "4am"
