@@ -1,6 +1,6 @@
 body {
-	height: 100%;
-	width: 100%;
+	background: url(https://www.editus.lu/Content/images/horoscope-bckg.jpg);
+	background-size: auto;
 }
 
 .Panel{

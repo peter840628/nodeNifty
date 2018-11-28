@@ -3,6 +3,8 @@ const hbs = require('hbs');
 const port = process.env.PORT || 8080;
 const bodyParser = require('body-parser');
 const accountFunctions = require('./account');
+const request = require('request');
+const horo = require('./horoscope');
 
 var app = express();
 
@@ -26,20 +28,29 @@ app.use((request, response, next) => {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended:true
+    extended: true
 }));
 
 app.post('/login', (request, response) => {
     var accountName = request.body.username;
     var password = request.body.password;
-    console.log(accountName, password);
-    
+
+
     accountFunctions.Login(accountName, password);
-    response.render('horoscope.hbs',{
-        title: "this is title",
-        sign: "this is sign",
-        description: "this is description"
+
+    var userSign = accountFunctions.getSign(accountName);
+    console.log(accountName, password, userSign);
+
+    horo.getFortune(userSign, (result) => {
+        response.render('horoscope.hbs', {
+            title: 'Main Page',
+            sign: userSign,
+            date_range: result.date_range,
+            description: result.description,
+
+        });
     });
+
 });
 
 app.post('/register', (request, response) => {
@@ -47,19 +58,27 @@ app.post('/register', (request, response) => {
     var password = request.body.password;
     var birthday = request.body.birthday;
     console.log(accountName, password, birthday);
-    
+
     accountFunctions.newAccount(accountName, password, birthday);
     response.render('placeholder_page.hbs');
 })
 
 
-app.get('/horoscope', (request, response) => {
-    response.render('horoscope.hbs', {
-        title: 'Main Page',
-        sign: 'cancer',
-        description: '123123123'
-    });
-});
+// app.get('/horoscope', (request, response) => {
+
+//     var sign = 'cancer';
+
+//     horo.getFortune(sign, (result) => {
+//         response.render('horoscope.hbs', {
+//             title: 'Main Page',
+//             sign: sign,
+//             date_range: result.date_range,
+//             description: result.description,
+
+//         });
+//     });
+
+// });
 
 app.get('/register', (request, response) => {
     response.render('register.hbs', {
