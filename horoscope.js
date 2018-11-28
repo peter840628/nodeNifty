@@ -1,8 +1,9 @@
+console.log('connected to horoscope.js');
 const request = require('request');
+var sign = "";
 
 var getFortune = (sign, callback) => {
 
-    var sign = 'Cancer';
 
     request({
         url: `https://aztro.sameerkumar.website/?sign=${sign}&day=today`,

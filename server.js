@@ -34,14 +34,23 @@ app.use(bodyParser.urlencoded({
 app.post('/login', (request, response) => {
     var accountName = request.body.username;
     var password = request.body.password;
-    console.log(accountName, password);
+
 
     accountFunctions.Login(accountName, password);
-    response.render('horoscope.hbs', {
-        title: "this is title",
-        sign: "this is sign",
-        description: "this is description"
+
+    var userSign = accountFunctions.getSign(accountName);
+    console.log(accountName, password, userSign);
+
+    horo.getFortune(userSign, (result) => {
+        response.render('horoscope.hbs', {
+            title: 'Main Page',
+            sign: userSign,
+            date_range: result.date_range,
+            description: result.description,
+
+        });
     });
+
 });
 
 app.post('/register', (request, response) => {
@@ -55,18 +64,21 @@ app.post('/register', (request, response) => {
 })
 
 
-app.get('/horoscope', (request, response) => {
+// app.get('/horoscope', (request, response) => {
 
-    horo.getFortune('cancer', (result) => {
-        console.log(result);
-        response.render('horoscope.hbs', {
-            title: 'Main Page',
-            sign: 'cancer',
-            description: result.description,
-        });
-    });
+//     var sign = 'cancer';
 
-});
+//     horo.getFortune(sign, (result) => {
+//         response.render('horoscope.hbs', {
+//             title: 'Main Page',
+//             sign: sign,
+//             date_range: result.date_range,
+//             description: result.description,
+
+//         });
+//     });
+
+// });
 
 app.get('/register', (request, response) => {
     response.render('register.hbs', {
