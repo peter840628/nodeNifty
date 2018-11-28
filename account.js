@@ -40,7 +40,6 @@ module.exports.Login = (username, password) => {
     var passwordValid = false;
     console.log(existedAcc)
     for (i = 0; i < existedAcc.length; i++) {
-
         if (existedAcc[i].account === username) {
             var accountValid = true;
             if (existedAcc[i].password === password) {
