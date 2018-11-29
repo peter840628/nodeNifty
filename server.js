@@ -95,7 +95,7 @@ app.get('/search/:scope', (request, response) => {
 
     https.get({
     hostname: 'api.cognitive.microsoft.com',
-    path:     '/bing/v7.0/search?q=' + encodeURIComponent(request.params.scope + ' online store'),
+    path:     '/bing/v7.0/search?q=' + encodeURIComponent(request.params.scope + ' horoscope online store'),
     headers:  { 'Ocp-Apim-Subscription-Key': 'fa4900c4123d4cc29e00561fa4991cb1' },
   }, res => {
     let body = ''
@@ -122,14 +122,6 @@ app.get('/search/:scope', (request, response) => {
     })
   });
 });
-
-
-
-function SearchingWord(sign){
-    
-}
-
-
 
 
 app.listen(port, () => {
