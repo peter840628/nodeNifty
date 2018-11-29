@@ -36,14 +36,12 @@ module.exports.newAccount = (account, password, birthday) => {
     }
 };
 
-
 module.exports.Login = (username, password) => {
 
     var accountValid = false;
     var passwordValid = false;
     console.log(existedAcc)
     for (i = 0; i < existedAcc.length; i++) {
-
         if (existedAcc[i].username === username) {
             var accountValid = true;
             if (existedAcc[i].password === password) {

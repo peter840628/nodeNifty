@@ -1,15 +1,25 @@
 <html>  
   
-<head>  
+<head>
+	<meta charset='utf-8'>  
     <TITLE>{{title}}</TITLE>  
 </head>  
   
-<body>  
-    <h1>{{sign}}</h1>
-    <h1>{{date_range}}</h1>
-    <h1>{{description}}</h1>
+<body style = "background: url(http://i.imgur.com/HF3Xxg1.jpg)">  
+    <h1 style = "color: white; text-align: center;">{{sign}}</h1>
+    <h1 style = "color: white; text-align: center;">{{date_range}}</h1>
+    <h2 style = "color: white; text-align: center;">{{description}}</h2>
+    <div style="text-align:center;">
+    	<button id="searchButton" style = "position: relative;">See Recommendations</button>
+    <div/>
 
+</body>
 
-</body>  
+<script type="text/javascript">
+	document.getElementById('searchButton').addEventListener("click", function(){
+    window.location.href = "/search/{{sign}}";
+
+});
+</script>
   
 </html>  

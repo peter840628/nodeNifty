@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const accountFunctions = require('./account');
 const request = require('request');
 const horo = require('./horoscope');
+const https = require('https');
 
 var app = express();
 
@@ -14,11 +15,11 @@ app.use(express.static(__dirname + '/views/stylesheets'));
 hbs.registerPartials(__dirname + '/views/partials');
 
 
-app.get('/', (request, response) => {
-    response.render('login.hbs', {
-        title: 'Login Page'
-    });
-});
+// app.get('/', (request, response) => {
+//     response.render('login.hbs', {
+//         title: 'Login Page'
+//     });
+// });
 
 app.use((request, response, next) => {
     var time = new Date().toString();
@@ -31,7 +32,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.post('/login', (request, response) => {
+app.post('/', (request, response) => {
     var accountName = request.body.username;
     var password = request.body.password;
 
@@ -47,10 +48,8 @@ app.post('/login', (request, response) => {
             sign: userSign,
             date_range: result.date_range,
             description: result.description,
-
         });
     });
-
 });
 
 app.post('/register', (request, response) => {
@@ -86,10 +85,42 @@ app.get('/register', (request, response) => {
     });
 });
 
-app.get('/login', (request, response) => {
+app.get('/', (request, response) => {
     response.render('login.hbs', {
         title: 'Login Page'
     });
+});
+
+app.get('/search/:scope', (request, response) => {
+
+    https.get({
+    hostname: 'api.cognitive.microsoft.com',
+    path:     '/bing/v7.0/search?q=' + encodeURIComponent(request.params.scope + ' horoscope online store'),
+    headers:  { 'Ocp-Apim-Subscription-Key': 'fa4900c4123d4cc29e00561fa4991cb1' },
+  }, res => {
+    let body = ''
+    res.on('data', part => body += part)
+    res.on('end', () => {
+      for (var header in res.headers) {
+        if (header.startsWith("bingapis-") || header.startsWith("x-msedge-")) {
+          console.log(header + ": " + res.headers[header])
+        }
+      }
+      console.log('\nJSON Response:\n')
+      // console.dir(JSON.parse(body), { colors: false, depth: null })
+      var content = JSON.parse(body).webPages.value;
+      console.log(content);
+   
+    response.render("search.hbs", {
+        title: "Search Page",
+        results: JSON.stringify(content)
+    });
+    })
+    res.on('error', e => {
+      console.log('Error: ' + e.message)
+      throw e
+    })
+  });
 });
 
 

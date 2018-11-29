@@ -3,8 +3,6 @@ const request = require('request');
 var sign = "";
 
 var getFortune = (sign, callback) => {
-
-
     request({
         url: `https://aztro.sameerkumar.website/?sign=${sign}&day=today`,
         json: true,
