@@ -36,7 +36,6 @@ module.exports.newAccount = (account, password, birthday) => {
     }
 };
 
-
 module.exports.Login = (username, password) => {
 
     var accountValid = false;
