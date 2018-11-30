@@ -1,35 +1,35 @@
 body {
-	background: url(http://i.imgur.com/HF3Xxg1.jpg);
-	background-size: auto;
+    background: url(http://i.imgur.com/HF3Xxg1.jpg);
+    background-size: auto;
 }
 
-.Panel{
-	/*margin-top: 55px;
+.Panel {
+    /*margin-top: 55px;
     padding-top: 20px;
     padding-bottom: 20px;*/
     position: fixed;
-    margin:auto;
+    margin: auto;
     left: 40%;
-    top:60%;
+    top: 60%;
     height: 40%;
     width: 23%;
-    color:white;
+    color: white;
 }
 
 #title {
-	width: 70%;
-	font-size: 20pt;
-	left: 0px;
-	right: 0px;
-	margin: auto;
-	height: 20%;
-	top: 30%;
-	position: fixed;
-	z-index: 99;
-	color: white;
-	text-align: center;
+    width: 70%;
+    font-size: 20pt;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    height: 20%;
+    top: 30%;
+    position: fixed;
+    z-index: 99;
+    color: white;
+    text-align: center;
 }
 
-h1{
-	text-align: auto;
+h1 {
+    text-align: auto;
 }
