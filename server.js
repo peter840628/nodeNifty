@@ -63,8 +63,13 @@ app.post("/register", (request, response) =>
     if (token !== false)
     {
         response.cookie("token", token);
+        response.render("placeholder_page.hbs");
     }
-    response.render("placeholder_page.hbs");
+    else {
+        response.render("register.hbs", {
+            title: "Register Page", fail:"true"
+    });
+    }
 });
 
 app.get("/search", (request, response) =>
@@ -119,7 +124,7 @@ app.get("/logout", (request, response) =>
 app.get("/register", (request, response) =>
 {
     response.render("register.hbs", {
-        title: "Register Page"
+        title: "Register Page", fail:"false"
     });
 });
 
