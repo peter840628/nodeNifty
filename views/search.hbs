@@ -1,34 +1,36 @@
- <!DOCTYPE html>
- <html>
- <head>
-  <meta charset='utf-8'>
-  <title>{{title}}</title>
- </head>
- <body style = "background: url(http://i.imgur.com/HF3Xxg1.jpg)">
-  <h1 style = "color: white">Here are recommandations for you:</h1>
-  <div id="results">{{results}}</div>
-  <div id="listDiv"></div>
- </body>
- <script>
-  var arrayOfObjs = JSON.parse(document.getElementById("results").innerHTML);
-  var i;
-  for (i = 0; i < 5; i++) { 
-    var block = document.createElement('div');
-    block.style.position = 'fixed';
-    block.style.height = '35vh';
-    block.style.width = '15vw';
-    block.style.top = '40%';
-    block.style.left = String(5 + i * 18) + '%';
-    block.style.padding = '4px';
-    block.style.background = 'white';
-    block.style.overflow = "auto";
-    block.style.whiteSpace = "pre-wrap"; 
-    block.style.wordWrap = "break-word";
-    block.innerHTML = "<div>" + arrayOfObjs[i].name+"<p></p><p>" + arrayOfObjs[i].url + "</p><p>"+arrayOfObjs[i].snippet + "</p></div>";
-    document.getElementById('listDiv').appendChild(block);
-    // document.getElementById('listDiv').innerHTML += "<div>"+arrayOfObjs[i].name+"</div><div>"+arrayOfObjs[i].url+"</div><div>"+arrayOfObjs[i].snippet+"</div><div></br></div>";
-  }
-var r = document.getElementById('results');
-r.parentNode.removeChild(r);
- </script>
- </html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>{{title}}</title>
+</head>
+<body style="background: url(http://i.imgur.com/HF3Xxg1.jpg)">
+    <h1 style="color: white">Here are recommandations for you:</h1>
+    <div id="results">{{results}}</div>
+    <button name="button1" type="button" value="Homepage" onclick="window.location.href='/'" />
+    <div id="listDiv"></div>
+    <script>
+        var arrayOfObjs = JSON.parse(document.getElementById("results").innerHTML);
+        var i;
+        for (i = 0; i < 5; i++)
+        {
+            var block = document.createElement('div');
+            block.style.position = 'fixed';
+            block.style.height = '35vh';
+            block.style.width = '15vw';
+            block.style.top = '40%';
+            block.style.left = String(5 + i * 18) + '%';
+            block.style.padding = '4px';
+            block.style.background = 'white';
+            block.style.overflow = "auto";
+            block.style.whiteSpace = "pre-wrap";
+            block.style.wordWrap = "break-word";
+            block.innerHTML = "<div>" + arrayOfObjs[i].name + "<p></p><p>" + arrayOfObjs[i].url + "</p><p>" + arrayOfObjs[i].snippet + "</p></div>";
+            document.getElementById('listDiv').appendChild(block);
+            // document.getElementById('listDiv').innerHTML += "<div>"+arrayOfObjs[i].name+"</div><div>"+arrayOfObjs[i].url+"</div><div>"+arrayOfObjs[i].snippet+"</div><div></br></div>";
+        }
+        var r = document.getElementById('results');
+        r.parentNode.removeChild(r);
+    </script>
+</body>
+</html>
