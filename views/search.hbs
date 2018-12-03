@@ -25,7 +25,7 @@
             block.style.overflow = "auto";
             block.style.whiteSpace = "pre-wrap";
             block.style.wordWrap = "break-word";
-            block.innerHTML = "<div>" + arrayOfObjs[i].name + "<p></p><p>" + arrayOfObjs[i].url + "</p><p>" + arrayOfObjs[i].snippet + "</p></div>";
+            block.innerHTML = "<div>" + arrayOfObjs[i].name + "<p></p><a href='" + arrayOfObjs[i].url+"' >Click here for more info</a><p>" + arrayOfObjs[i].snippet + "</p></div>";
             document.getElementById('listDiv').appendChild(block);
             // document.getElementById('listDiv').innerHTML += "<div>"+arrayOfObjs[i].name+"</div><div>"+arrayOfObjs[i].url+"</div><div>"+arrayOfObjs[i].snippet+"</div><div></br></div>";
         }
