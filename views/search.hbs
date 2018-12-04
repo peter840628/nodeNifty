@@ -7,7 +7,7 @@
 <body style="background: url(http://i.imgur.com/HF3Xxg1.jpg)">
     <h1 style="color: white">Here are recommandations for you:</h1>
     <div id="results">{{results}}</div>
-    <button name="button1" type="button" value="Homepage" onclick="window.location.href='/'">Log out</button>
+    <button name="button1" type="button" value="Homepage" onclick="window.location.href='/'" style="position: absolute; right:0px; top:0px">Log out</button>
     <div id="listDiv"></div>
     <script>
         var arrayOfObjs = JSON.parse(document.getElementById("results").innerHTML);
