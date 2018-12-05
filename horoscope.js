@@ -1,23 +1,22 @@
-console.log('connected to horoscope.js');
-const request = require('request');
+console.log("connected to horoscope.js");
+const request = require("request");
 var sign = "";
 
 var getFortune = (sign, callback) => {
     request({
         url: `https://aztro.sameerkumar.website/?sign=${sign}&day=today`,
         json: true,
-        method: 'POST'
+        method: "POST"
     }, (error, response, body) => {
         if (error) {
-            callback('Cant connect to Horoscope Server');
+            callback("Cant connect to Horoscope Server");
         } else {
-            console.log('horoscope connection successful');
+            console.log("horoscope connection successful");
             callback(body);
         }
     });
-}
-
+};
 
 module.exports = {
     getFortune
-}
+};

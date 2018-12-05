@@ -1,55 +1,26 @@
-console.log('connected to sign.js');
+console.log("connected to sign.js");
 
-var birthday = "1995-06-08";
+var signsDate = [
+    Date.parse("1-20"), Date.parse("2-18"), Date.parse("3-20"), Date.parse("4-20"), Date.parse("5-21"),
+    Date.parse("6-21"), Date.parse("7-23"), Date.parse("8-23"), Date.parse("9-23"), Date.parse("10-23"),
+    Date.parse("11-22"), Date.parse("12-22")
+];
 
-var getSign = (birthday) => {
+const signs = ["Aquarius", "Pisces", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scopio", "Sagittarius", "Capricorn"];
 
+var getSign = (birthday) =>
+{
     var bday = Date.parse(birthday.slice(5, 10));
-
-    var aquarius = Date.parse("1-20");
-    var pisces = Date.parse("2-18");
-    var aries = Date.parse("3-20");
-    var taurus = Date.parse("4-20");
-    var gemini = Date.parse("5-21");
-    var cancer = Date.parse("6-21");
-    var leo = Date.parse("7-23");
-    var virgo = Date.parse("8-23");
-    var libra = Date.parse("9-23");
-    var scopio = Date.parse("10-23");
-    var sagittarius = Date.parse("11-22");
-    var capricorn = Date.parse("12-22");
-
-
-    if (bday > aquarius && bday < pisces) {
-        return "Aquarius";
-    } else if (bday > pisces && bday < aries) {
-        return "Pisces";
-    } else if (bday > aries && bday < taurus) {
-        return "Aries";
-    } else if (bday > taurus && bday < gemini) {
-        return "Taurus";
-    } else if (bday > gemini && bday < cancer) {
-        return "Gemini";
-    } else if (bday > cancer && bday < leo) {
-        return "Cancer";
-    } else if (bday > leo && bday < virgo) {
-        return "Leo";
-    } else if (bday > virgo && bday < libra) {
-        return "Virgo";
-    } else if (bday > libra && bday < scopio) {
-        return "Libra";
-    } else if (bday > scopio && bday < sagittarius) {
-        return "Scopio";
-    } else if (bday > sagittarius && bday < capricorn) {
-        return "Sagittarius";
-    } else {
-        return "Capricorn";
+    for (var i = 0; i < signsDate.length - 1; i++)
+    {
+        if (bday > signsDate[i] && bday < signsDate[i + 1])
+        {
+            return signs[i];
+        }
     }
-}
-
-// console.log(getSign(birthday));
-
+    return "Capricorn";
+};
 
 module.exports = {
-    getSign
-}
+    getSign, signs
+};
